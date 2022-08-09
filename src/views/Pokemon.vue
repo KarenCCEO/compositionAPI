@@ -9,39 +9,14 @@
 </template>
 
 <script>
-import { ref } from '@vue/reactivity'
-import { onMounted } from '@vue/runtime-core'
+import{useFetch} from '../hooks/useFetch'
+
 export default {
+    
     setup(){
-        const arrayData= ref([])
-        //consultando con el ciclo de vida 
-        onMounted(async()=>{
-            try{
-                const res = await fetch('api.json')
-                arrayData.value= await res.json()
-
-            }catch (error){
-                console.log(error)
-            }
-        })
-       // const fetchData= async () =>{
-       //      try{
-       //          const res = await fetch('api.json')
-                //consumiendo la api con una url
-                //const res = await fetch('https://pokeapi.co/api/v2/pokemon/ditto')
-       //          arrayData.value= await res.json()
-
-       //      }catch(error){
-        //         console.log(error)
-        //     }
-      //   }
-     //    fetchData()
-        return{arrayData}
+        return {...useFetch('api.json')}
+       
     }
 
 }
 </script>
-
-<style>
-
-</style>
