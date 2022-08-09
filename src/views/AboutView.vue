@@ -5,8 +5,10 @@
     <!--Paso 5: llamar a los props en el componente titulo.vue-->
     <Titulo :contador="contador" :color="color"/>
     <h1 :style="{'color': color }">contador: {{contador}}</h1>
-    <button @click="aumentar">+</button>
-    <button @click="disminuir">-</button>
+    <!--<button @click="aumentar">+</button>-->
+    <!--<button @click="disminuir">-</button>-->
+    <BtnC :textoBoton="'Aumentar'" @accion="aumentar"></BtnC>
+    <BtnC :textoBoton="'Disminuir'" @accion="disminuir"></BtnC>
     <hr>
     <input type="text" v-model="texto">
     <p>{{texto}}</p>
@@ -17,12 +19,13 @@ import { ref } from '@vue/reactivity';
 import { computed } from '@vue/runtime-core';
 //paso 1: importar el componente
 import Titulo from '@/components/Titulo.vue';
+import BtnC from '@/components/BtnC.vue';
 export default {
   //paso 2: crear el componente 
   components:{
-    Titulo
-
-  },
+    Titulo,
+    BtnC
+},
 
   setup(){
     const contador = ref(0);
