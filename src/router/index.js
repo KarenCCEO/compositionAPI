@@ -24,6 +24,13 @@ const routes = [
     path: '/pokemon',
     name: 'Pokemon',
     component: ()=> import('../views/Pokemon.vue')
+  },
+  {
+    path: '/pokemon/:nombre',
+    name: 'Poke',
+    //se agrega el props para pasar los datos a poke.vue
+    props: true,
+    component: ()=> import('../views/Poke.vue')
   }
 ]
 
