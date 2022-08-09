@@ -1,6 +1,10 @@
 <template>
   <div class="about">
-    <h1 :style="{'color': color}">contador: {{contador}}</h1>
+    <!--Paso 3: Agregar la nueva etiqueta -->
+    <!--Paso 4: Enviar los datos al otro componente con :contador="contador-->
+    <!--Paso 5: llamar a los props en el componente titulo.vue-->
+    <Titulo :contador="contador" :color="color"/>
+    <h1 :style="{'color': color }">contador: {{contador}}</h1>
     <button @click="aumentar">+</button>
     <button @click="disminuir">-</button>
     <hr>
@@ -11,7 +15,15 @@
 <script>
 import { ref } from '@vue/reactivity';
 import { computed } from '@vue/runtime-core';
+//paso 1: importar el componente
+import Titulo from '@/components/Titulo.vue';
 export default {
+  //paso 2: crear el componente 
+  components:{
+    Titulo
+
+  },
+
   setup(){
     const contador = ref(0);
     const texto = ref('')
